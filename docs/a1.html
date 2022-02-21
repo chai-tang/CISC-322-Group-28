@@ -25,8 +25,13 @@ layout: default
         </p>
 
         <h2>2. Introduction</h2>
+        <h3>2.1 Purpose</h3>
         <p>
-          placeholder
+          The purpose of this document is to provide a comprehensive architectural analysis of the Apollo autonomous vehicle system. This will be achieved by looking at three main aspects of Apollo’s design; architectural style/structure, system goals and the various modules that make the former possible. This is done with the intent to capture the unique design decisions applied by the Apollo system and format them in a manner that briefly and effectively conveys this information to stakeholders of the system.
+        </p>
+        <h3>2.2 Organization</h3>
+        <p>
+          The document will be organized into distinct parts focusing on the myriad of analytical avenues available to fully explore the architectural systems of Apollo. This begins with summarizing the architecture, before delving deeper and analyzing the system goals and the modules that are used to achieve them. Following on from this, the document will describe the system through the lens of several architectural views. This will include use case, logic, data, and deployment. Finally it will conclude with a brief overarching summary of the system and possible future courses for the project.
         </p>
 
         <h2>3. Architecture</h2>
@@ -40,6 +45,8 @@ layout: default
             <p>
               As of version 5.5, Apollo has 12 core modules in total: Perception, Prediction, Routing, Planning, Control, Guardian, CANBus, HP Map, Localization, Monitor, HMI, and Storytelling. Section 3.3 of this report contains detailed descriptions of each of these module's purposes and interactions with other modules. Figure 2.0 below further depicts the interactions between most core modules in terms of control and data flow. This is the graph used in the most recent versions of official Apollo documentation.
             </p>
+            <img src="img/dependancies.png">
+            <h4>Figure 1.0 Module Dependancy Graph</h4>
             <img src="img/Apollo_3_5_software_architecture.png">
             <h4>Figure 2.0 Data & Control Flow (from the Apollo github docs)</h4>
 
@@ -140,28 +147,34 @@ layout: default
             </p>
 
         <h3>4. Use Cases</h3>
+        <p>
+          The Apollo interface when deployed should accomplish these tasks: 
+        </p>
         <h4>Use Case 1</h4>
         <p>
-          placeholder
+          Follow a detour route due to construction
         </p>
+        <img src="img/usecase1.jpg">
         <h4>Use Case 2</h4>
         <p>
-          placeholder
+          Come to a full stop at a red light
         </p>
+        <img src="img/usecase2.jpg">
 
         <h3>5. Derivation Process</h3>
         <p>
-          placeholder
+          To derive the conceptual architecture of Apollo, we first inspected the available github documentation, particularly the documentation pertaining to the system’s architecture to familiarize ourselves with the basic components and modules that make up the system. The github documentation provided the general layout of the system’s architecture including basic connections between components. From there we were able to see that Apollo uses external interfaces such as GPS and liDar. We were then able to further research these external interfaces and what purpose they serve in the working system. 
+        </p>
+        <p>
+          We found that there lacked a significant amount of documentation for the current version of Apollo (v7) and as a result seeked information elsewhere to help fill in the gaps. Most of the missing information was found in version 5.5 documentation which we supplemented for the current version. We also had the idea to look at other software systems that serve the same function to see if their architectures were similar, however, the documentation for self-driving uber was not helpful in this regard. 
         </p>
 
         <h3>6. Conclusions</h3>
         <p>
-          placeholder
+          One of the lessons we learned while researching this project is how little documentation there is on the architectures of self driving vehicles. This made comparing the Apollos architecture very hard to reference when compared to other autonomous vehicles architectures. Often for other architectures the exact designs were proprietary so only general information would be listed such as Nvidia's Dave-2.0 architecture. In this example while a general architecture was laid out specifics were not shown such as the neural network they used in the architecture. They talked about using a convolutional neural network with backpropagation but the structure of the network is not discussed in detail such as the amount of nodes, layer types(LSTM, fully connected, etc) or which type of back propagation. To combat this issue we could have taken a look at all the major autonomous vehicle architectures to try and infer which areas of these kinds of architectures are standardized. This could have helped us see the areas of the Apollo architecture where missing and infer a general architecture for those areas. 
         </p>
-
-        <h3>7. Lessons Learned</h3>
         <p>
-          placeholder
+          Another part of the research that compared Apollo to other architectures is how unstandardized autonomous vehicles are. Because it is a relatively new concept with many of the major architectures being proprietary the architectures for self-driving vehicles vary quite drastically. Almost all of the software can be different between models as well as the hardware since different designers will prioritize different features over others. This might have been something we wish we knew before researching as if we knew most of the architectures were quite different we might have looked into other ones more closely.    
         </p>
 
 
